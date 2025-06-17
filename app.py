@@ -103,13 +103,19 @@ imagens_carregadas = st.file_uploader(
     accept_multiple_files=True # Para este exemplo, apenas um arquivo por vez
 )
 
+if imagens_carregadas is None or len(imagens_carregadas) == 0:
+    st.info("Por favor, carregue uma imagem ou um arquivo PDF para começar.")
+
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader('Pré-visualização da imagem')
-    imagem_visualizada = st.selectbox(label='Selecione a imagem para pré-visualização',
-                                       format_func=lambda img: img.name if img else "Arquivo desconhecido",
-                                      options = imagens_carregadas, index = 0)
+    if imagens_carregadas is True or len(imagens_carregadas) != 0:
+        st.subheader('Pré-visualização da imagem')
+        imagem_visualizada = st.selectbox(label='Selecione a imagem para pré-visualização',
+                                        format_func=lambda img: img.name if img else "Arquivo desconhecido",
+                                        options = imagens_carregadas, index = 0, label_visibility='hidden')
+    else:
+        imagem_visualizada = None
     if imagem_visualizada is not None:
         imagem_bytes = imagem_visualizada.getvalue()
         st.image(imagem_bytes, caption="Imagem selecionada", use_container_width=True)
@@ -155,8 +161,6 @@ with col2:
                 file_name="relatorio.txt",   # extensão .txt
                 mime="text/plain",           
             )
-    else:
-        st.info("Por favor, carregue uma imagem ou um arquivo PDF para começar.")
 
 
  
