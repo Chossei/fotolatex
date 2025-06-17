@@ -238,6 +238,11 @@ with col1:
 #         # Exibe a imagem carregada. Para PDF, mostrará apenas a primeira página.
 #         st.image(imagens_carregadas, caption="Sua imagem carregada")#, width =300)
 
+# Definindo as variáveis para evitar erros em col3 e col4
+
+saidas_latex = None
+saidas_markdown = None
+
 with col2:
     if imagens_carregadas and len(imagens_carregadas) > 0:  
         if st.button("Processar Imagem e Gerar Códigos", key="process_button"):
@@ -285,9 +290,6 @@ with col2:
                 file_name="relatorio.md",   # extensão .txt
                 mime="text/markdown",           
             )
-        else:
-            saidas_latex = None
-            saidas_markdown = None
 
 st.divider()
 
