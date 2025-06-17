@@ -1,5 +1,5 @@
 import streamlit as st 
-import numpy as np # Importa numpy para EasyOCR
+import numpy as np
 from google import genai
 from google.genai import types
 
@@ -270,26 +270,12 @@ with col2:
 
             # Exibir o resultado em LaTeX
             st.markdown("---")
-            st.subheader("Resultado em LaTeX:")             
+            st.subheader("Visualização:")             
             # st.markdown(saidas)
             st.markdown(saidas_markdown)
             # Baixar o resultado em LaTeX e Markdown
             saida_final_latex = estruturar_latex(saidas_latex)
             saida_final_markdown = estruturar_markdown(saidas_markdown)
-
-            st.download_button(
-                label="Baixar código LaTeX",
-                data=saida_final_latex,            # sua string de texto
-                file_name="relatorio.txt",   # extensão .txt
-                mime="text/plain",           
-            )
-
-            st.download_button(
-                label="Baixar código Markdown",
-                data=saidas_markdown,            # sua string de texto
-                file_name="relatorio.md",   # extensão .txt
-                mime="text/markdown",           
-            )
 
 st.divider()
 
