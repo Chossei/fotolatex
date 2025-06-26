@@ -215,7 +215,7 @@ imagens_carregadas = st.file_uploader(
 )
 
 if imagens_carregadas is None or len(imagens_carregadas) == 0:
-    st.info("Por favor, carregue uma imagem ou um arquivo PDF para começar.")
+    st.info("Por favor, carregue uma imagem para começar.")
 
 col1, col2 = st.columns(2)
 
